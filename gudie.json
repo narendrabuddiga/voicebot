@@ -1,0 +1,55 @@
+//Syntax of Initial Message Sent by Voice.AI Gateway
+{
+
+    "type": "event",
+
+    "name": "start",
+
+    "parameters": {
+
+        "callee": "12345678",
+
+        "calleeHost": "10.20.30.40",
+
+        "caller": "12345678",
+
+        "callerHost": "10.20.30.40"
+
+    }
+}
+
+//Syntax of Text Message Sent by Voice.AI Gateway
+{
+
+    "type": "message",
+
+    "text": "Hi.",
+
+    "parameters": {
+
+        "confidence": 0.6599681,
+
+    }
+
+}
+//Syntax of DTMF Sent by Voice.AI Gateway
+{
+
+    "type": "event",
+
+    "name": "DTMF",
+
+    "value": "3"
+
+}
+
+//Syntax of No User Input Event Sent by Voice.AI Gateway
+{
+
+    "type": "event",
+
+    "name": "noUserInput",
+
+    "value": "1
+
+}

@@ -1,0 +1,20 @@
+{
+  "name": "voice-bot",
+  "version": "1.0.0",
+  "description": "Echo Voice bot",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "echo-voice-bot"
+  },
+  "author": "Narendra dev",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "joi": "^17.4.2",
+    "mongodb": "^4.1.0"
+  }
+}
