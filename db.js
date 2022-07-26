@@ -6,6 +6,7 @@ const dbName = "voicebot";
 const dbConnection = (cb) => {
     MongoClient.connect(url, function(err, db) {
         if (err) return cb(err, null);
+        console.log(".....................changesn")
         return cb(null, db);
     });
 };
