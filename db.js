@@ -1,12 +1,12 @@
-const { MongoClient } = require('mongodb');
+import { MongoClient } from 'mongodb';
 const url = "mongodb://localhost:27017/voicebot";
 const dbName = "voicebot";
 
 
 const dbConnection = (cb) => {
-    MongoClient.connect(url, function(err, db) {
+    MongoClient.connect(url, (err, db)=> {
         if (err) return cb(err, null);
-        console.log(".....................changesn")
+        console.log(".....................changes");
         return cb(null, db);
     });
 };
@@ -14,8 +14,8 @@ const dbConnection = (cb) => {
 const createCollection = () => {
     return new Promise((resolve, reject) => {
         dbConnection((err, db) => {
-            var dbo = db.db(dbName);
-            dbo.createCollection("echoCollection", function(err, res) {
+            let dbo = db.db(dbName);
+            dbo.createCollection("echoCollection", (err, res)=> {
                 if (err) reject(err);
                 resolve(res);
             });
@@ -26,8 +26,8 @@ const createCollection = () => {
 const insertData = (myobj) => {
     return new Promise((resolve, reject) => {
         dbConnection((err, db) => {
-            var dbo = db.db(dbName);
-            dbo.collection("echoCollection").insertOne(myobj, function(err, res) {
+            let dbo = db.db(dbName);
+            dbo.collection("echoCollection").insertOne(myobj, (err, res) =>{
                 if (err) reject(err);
                 resolve(res);
             });
@@ -38,8 +38,8 @@ const insertData = (myobj) => {
 const fetchEchoData = (query) => {
     return new Promise((resolve, reject) => {
         dbConnection((err, db) => {
-            var dbo = db.db(dbName);
-            dbo.collection("echoCollection").findOne(query, function(err, res) {
+            let dbo = db.db(dbName);
+            dbo.collection("echoCollection").findOne(query, (err, res)=> {
                 if (err) reject(err);
                 resolve(res);
             });
@@ -48,7 +48,11 @@ const fetchEchoData = (query) => {
 };
 
 
-exports.fetchEchoData = fetchEchoData;
-exports.insertData = insertData;
-exports.createCollection = createCollection;
-exports.dbConnection = dbConnection;
+const _fetchEchoData = fetchEchoData;
+export { _fetchEchoData as fetchEchoData };
+const _insertData = insertData;
+export { _insertData as insertData };
+const _createCollection = createCollection;
+export { _createCollection as createCollection };
+const _dbConnection = dbConnection;
+export { _dbConnection as dbConnection };
